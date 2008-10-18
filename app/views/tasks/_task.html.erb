@@ -1,0 +1,4 @@
+<h2 class="<%= task.completed? ? 'completed' : '' %>"><%= link_to task.title, edit_task_path(task) %></h2>
+<p><%= task.completed? ? 'Splněno' : 'Nesplněno' %></p>
+
+<hr />
