@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	
+	<title>JSON client</title>
+	
+	<style type="text/css" media="screen">
+	 body { font: normal 95%/140% sans-serif; padding: 2em;}
+	 h1 { color: #333; font-size: 140%; margin: 1em 1em 0.5em 1em; border-bottom: 2px solid #333; }
+	 #tasks_container p { margin: 1em; padding: 1em; border: 2px solid #ccc; }
+	 #tasks_container p.true strong { color: green; }
+	 #tasks_container p.false strong { color: red; }
+	</style>
+	
+	<script src="javascripts/prototype.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/effects.js" type="text/javascript" charset="utf-8"></script>
+	<script src="javascripts/controls.js" type="text/javascript" charset="utf-8"></script>
+
+	<script type="text/javascript" charset="utf-8">
+	 function show(collection) {
+	   // Vypis do Firebugu
+	   console.log(collection)
+	   // Template rozsireni Prototype.js
+	   var item_template = new Template('<p class="#{completed}">Task <strong>#{title}</strong>,  completed: #{completed}</p>');
+	   var output = ''
+	   // Parsujeme JSON z argumentu funkce
+	   collection.each( function(n) { output += item_template.evaluate( {title:n.task.title, completed:n.task.completed} ) } )
+	   // Vypiseme do HTML
+	   $('tasks_container').update( output )
+	 }
+	</script>
+	
+</head>
+
+<body>
+
+<h1>JSON klient pro webovou službu běžící na <a href="http://localhost:3000">http://localhost:3000</a></h1>
+
+<div id="tasks_container"></div>
+
+<script src="http://localhost:3000/tasks.json" type="text/javascript" charset="utf-8"></script>
+
+</body>
+</html>
