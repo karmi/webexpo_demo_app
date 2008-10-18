@@ -64,9 +64,16 @@ class TasksController < ApplicationController
         flash[:notice] = 'Task was successfully updated.'
         format.html { redirect_to(@task) }
         format.xml  { head :ok }
+        format.js do
+          render(:update) do |page|
+            page.replace_html dom_id(@task), :partial => 'task'
+            page.visual_effect :highlight, dom_id(@task)
+          end
+        end
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @task.errors, :status => :unprocessable_entity }
+        format.js   { render :text => "alert('Error!')" }
       end
     end
   end

@@ -1,3 +1,5 @@
+<div id="<%= dom_id(task) %>">
+
 <h2 class="<%= task.completed? ? 'completed' : 'not_completed' %>">
   <%= check_box_tag :completed, 1, task.completed,
         :onclick => remote_function(
@@ -9,3 +11,5 @@
 <p><%= task.completed? ? 'Splněno' : 'Nesplněno' %></p>
 
 <hr />
+
+</div>
