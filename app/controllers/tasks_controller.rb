@@ -7,6 +7,7 @@ class TasksController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @tasks }
+      format.json { render :json => @tasks, :callback => 'show' }
     end
   end
 
