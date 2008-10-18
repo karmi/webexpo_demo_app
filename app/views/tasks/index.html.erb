@@ -1,7 +1,7 @@
 <h1>Listing tasks</h1>
 
 <%- @tasks.each do |task| -%>
-<h2><%= link_to task.title, edit_task_path(task) %></h2>
+<h2 class="<%= task.completed? ? 'completed' : '' %>"><%= link_to task.title, edit_task_path(task) %></h2>
 <p><%= task.completed? ? 'Splněno' : 'Nesplněno' %></p>
 
 <hr />
