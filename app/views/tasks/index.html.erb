@@ -1,11 +1,6 @@
 <h1>Listing tasks</h1>
 
-<%- @tasks.each do |task| -%>
-
-<%= render :partial => "task", :object => task %>
-
-<%- end -%>
-
+<%= render :partial => "task", :collection => @tasks %>
 
 <br />
 
