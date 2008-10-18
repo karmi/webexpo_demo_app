@@ -1,4 +1,4 @@
-<h2 class="<%= task.completed? ? 'completed' : '' %>">
+<h2 class="<%= task.completed? ? 'completed' : 'not_completed' %>">
   <%= check_box_tag :completed, 1, task.completed,
         :onclick => remote_function(
                       :url => task_path(task), 
