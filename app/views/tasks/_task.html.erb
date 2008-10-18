@@ -1,4 +1,11 @@
-<h2 class="<%= task.completed? ? 'completed' : '' %>"><%= link_to task.title, edit_task_path(task) %></h2>
+<h2 class="<%= task.completed? ? 'completed' : '' %>">
+  <%= check_box_tag :completed, 1, task.completed,
+        :onclick => remote_function(
+                      :url => task_path(task), 
+                      :method => 'put',
+                      :with => "'task[completed]=' + this.checked")%>
+  <%= link_to task.title, edit_task_path(task) %>
+</h2>
 <p><%= task.completed? ? 'Splněno' : 'Nesplněno' %></p>
 
 <hr />
